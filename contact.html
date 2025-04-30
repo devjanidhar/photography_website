@@ -133,39 +133,37 @@
 
 <script>
 document.getElementById("contactForm").addEventListener("submit", function (e) {
-    // Stop form from submitting immediately
+    // Prevent actual form submission for now
+    e.preventDefault();
 
-  // Get form values
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const session = document.getElementById("session").value.trim();
-  const event = document.getElementById("event").value.trim();
+    // Get values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const session = document.getElementById("session").value.trim();
+    const event = document.getElementById("event").value.trim();
 
-  // Validate fields
-  if (!name || !email || !phone || !session || !event) {
-    alert("Please fill out all fields.");
-    return;
-  }
+    // Validation
+    if (!name || !email || !phone || !session || !event) {
+      alert("Please fill out all fields.");
+      return;
+    }
 
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (!email.match(emailPattern)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
 
-  const phonePattern = /^[0-9]{10}$/;
-  if (!phone.match(phonePattern)) {
-    alert("Please enter a valid 10-digit phone number.");
-    return;
-  }
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phone.match(phonePattern)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
 
-  // ✅ Show success notification
-  alert("✅ Thank you! Your form has been submitted.");
-
-  // Now submit the form
-  this.submit();
-});
+    // If all checks pass, allow form to submit
+    this.submit();
+  });
 
 </script>
 
